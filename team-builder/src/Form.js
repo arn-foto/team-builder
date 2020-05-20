@@ -24,7 +24,7 @@ function OurTeam() {
 	};
 
 	const formSubmit = (event) => {
-		event.preventDefault();
+		event.preventDefault(); //prevents pages from autorefreshing
 
 		let newMember = {
 			id: uuid(),
@@ -51,7 +51,7 @@ function OurTeam() {
 			<form onSubmit={formSubmit}>
 				<label>
 					First Name
-					<input name="name" placeholder="" value={value.name} onChange={inputChange} />
+					<input name="name" placeholder="" value={value.name} onChange={inputChange} required />
 				</label>
 
 				<label>
