@@ -12,7 +12,7 @@ function OurTeam() {
 	const [ members, setMembers ] = useState(teamMembers);
 	const [ value, setValue ] = useState({
 		name: '',
-		streetName: '',
+		streetName: '" "',
 		lastName: ''
 	});
 
