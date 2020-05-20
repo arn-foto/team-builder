@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+//UUID (Universal Unique Identifier) is used to uniquely identify some object
 
+// set team members value
 const teamMembers = [
 	{ id: uuid(), name: 'Anthony', streetName: '"The Weirdo"', lastName: 'Navarro' },
 	{ id: uuid(), name: 'Matias', streetName: '"The Hammer"', lastName: 'Iturbide' },
 	{ id: uuid(), name: 'Adrian', streetName: '"The Brain"', lastName: 'Hartley' },
-	{ id: uuid(), name: 'Kyle', streetName: '"The Clobber"', lastName: 'Clopton' }
+	{ id: uuid(), name: 'Kyle', streetName: '"The Clopper"', lastName: 'Clopton' }
 ];
-
+//setting state
 function OurTeam() {
 	const [ members, setMembers ] = useState(teamMembers);
 	const [ value, setValue ] = useState({
@@ -32,18 +34,20 @@ function OurTeam() {
 			streetName: value.streetName,
 			lastName: value.lastName
 		};
-
+		//  The spread operator can be used to take an
+		// existing array and add another element to it while still preserving the original array
 		setMembers([ ...members, newMember ]);
 	};
 
+	/*this maps through the team member data and outputs it to the screen */
 	return (
 		<div className="container">
 			<div className="list">
 				<h2>Cage Fight Sign Up.</h2>
 				<ul>
-					{members.map((fr) => (
-						<ul key={fr.id}>
-							{fr.name} {fr.streetName} {fr.lastName}
+					{members.map((value) => (
+						<ul key={value.id}>
+							{value.name} {value.streetName} {value.lastName}
 						</ul>
 					))}
 				</ul>
