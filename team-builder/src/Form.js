@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 const teamMembers = [
-	{ id: uuid(), name: 'Anthony', email: 'Anthony@lambda.com', role: 'clown' },
-	{ id: uuid(), name: 'Matias', email: 'Matias@lambda.com', role: 'nerd' },
-	{ id: uuid(), name: 'Adrian', email: 'Adrian@lambda.com', role: 'nerd' },
-	{ id: uuid(), name: 'Kyle', email: 'Kyle@lambda.com', role: 'nerd' }
+	{ id: uuid(), name: 'Anthony', streetName: '"The Weirdo"', lastName: 'Navarro' },
+	{ id: uuid(), name: 'Matias', streetName: '"The Hammer"', lastName: 'Iturbide' },
+	{ id: uuid(), name: 'Adrian', streetName: '"The Brain"', lastName: 'Hartley' },
+	{ id: uuid(), name: 'Kyle', streetName: '"The Clobber"', lastName: 'Clopton' }
 ];
 
 function OurTeam() {
 	const [ members, setMembers ] = useState(teamMembers);
 	const [ value, setValue ] = useState({
 		name: '',
-		email: '',
-		role: ''
+		streetName: '',
+		lastName: ''
 	});
 
 	const inputChange = (event) => {
@@ -26,11 +26,11 @@ function OurTeam() {
 	const formSubmit = (event) => {
 		event.preventDefault();
 
-		const newMember = {
+		let newMember = {
 			id: uuid(),
 			name: value.name,
-			email: value.email,
-			role: value.role
+			streetName: value.streetName,
+			lastName: value.lastName
 		};
 
 		setMembers([ ...members, newMember ]);
@@ -39,29 +39,29 @@ function OurTeam() {
 	return (
 		<div className="container">
 			<div className="list">
-				<h2>List of brave fools.</h2>
+				<h2>Cage Fight Sign Up.</h2>
 				<ul>
 					{members.map((fr) => (
 						<ul key={fr.id}>
-							{fr.name} {fr.email} {fr.role}
+							{fr.name} {fr.streetName} {fr.lastName}
 						</ul>
 					))}
 				</ul>
 			</div>
 			<form onSubmit={formSubmit}>
 				<label>
-					Name
-					<input name="name" placeholder="Name" value={value.name} onChange={inputChange} />
+					First Name
+					<input name="name" placeholder="" value={value.name} onChange={inputChange} />
 				</label>
 
 				<label>
-					Email
-					<input name="email" placeholder="Email" value={value.email} onChange={inputChange} type="email" />
+					Street Name
+					<input name="streetName" placeholder="" value={value.streetName} onChange={inputChange} />
 				</label>
 
 				<label>
-					Role
-					<input name="role" placeholder="Role" value={value.role} onChange={inputChange} />
+					Last Name
+					<input name="lastName" placeholder="" value={value.lastName} onChange={inputChange} />
 				</label>
 
 				<input className="button" type="submit" />
